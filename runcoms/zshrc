@@ -11,3 +11,15 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
+source_sh () {
+  emulate -LR sh
+  . "$@"
+}
+
+source_sh ~/.profile
+
+HISTFILE=~/.histfile
+HISTSIZE=900000
+SAVEHIST=900000
+setopt appendhistory autocd
+unsetopt extendedglob nomatch notify
