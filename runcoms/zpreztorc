@@ -38,6 +38,7 @@ zstyle ':prezto:load' pmodule \
   'spectrum' \
   'utility' \
   'completion' \
+  'pacman' \
   'prompt' \
   'git' \
   'python' \
@@ -113,9 +114,8 @@ zstyle ':prezto:module:history-substring-search' globbing-flags ''
 #
 # Pacman
 #
-
 # Set the Pacman frontend.
-zstyle ':prezto:module:pacman' frontend 'yaourt'
+# zstyle ':prezto:module:pacman' frontend 'pacman'
 
 #
 # Prompt

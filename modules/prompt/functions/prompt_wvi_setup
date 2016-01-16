@@ -18,7 +18,8 @@ function prompt_sorin_pwd {
     _prompt_sorin_pwd="$MATCH"
     unset MATCH
   else
-    _prompt_sorin_pwd="${${${${(@j:/:M)${(@s:/:)pwd}##.#?}:h}%/}//\%/%%}/${${pwd:t}//\%/%%}"
+  _prompt_sorin_pwd="${(%):-%~} "
+   #  _prompt_sorin_pwd="${${${${(@j:/:M)${(@s:/:)pwd}##.#?}:h}%/}//\%/%%}/${${pwd}//\%/%%}"
   fi
 }
 
@@ -31,11 +32,6 @@ function prompt_sorin_precmd {
   # Get Git repository information.
   if (( $+functions[git-info] )); then
     git-info
-  fi
-
-  # Get Ruby info
-  if (( $+functions[ruby-info] )); then
-    ruby-info
   fi
 
   # Get Virtual env info
@@ -92,10 +88,9 @@ function prompt_sorin_setup {
   zstyle ':prezto:module:node:info:version' format '%F{106}node:%v%f'
 
   # Define prompts.
-  PROMPT='
-%F{113}%n@%m%f %F{208}λ%f %F{cyan}${_prompt_sorin_pwd}%f ${node_info[version]} ${python_info[virtualenv]}
-%(!. %B%F{red}#%f%b.)${editor_info[keymap]} '
-  RPROMPT='${editor_info[overwrite]}%(?:: %F{red}⏎%f)${VIM:+" %B%F{green}V%f%b"}${git_info[rprompt]} ${git_info:+${(e)git_info[prompt]}}'
+  PROMPT='%F{6}%n@%m%f %F{2}λ%f %F{cyan}${_prompt_sorin_pwd}%f ${node_info[version]} ${python_info[virtualenv]}${git_info:+${(e)git_info[prompt]}} ${git_info[rprompt]}
+%(!. %B%F{red}#%f%b.)${editor_info[keymap]}'
+  RPROMPT='%F{2}(%D{%a %d.%m. %H:%M})%f ${editor_info[overwrite]}%(?:: %F{red}⏎%f)${VIM:+" %B%F{green}V%f%b"}'
   SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
 }
 
