@@ -33,3 +33,14 @@ setopt pushdignoredups
 ## This reverts the +/- operators.
 setopt pushdminus
 
+autoload bashcompinit && bashcompinit
+
+# added by travis gem
+[ -f /home/wvi/.travis/travis.sh ] && source /home/wvi/.travis/travis.sh
+
+
+# nvm completion
+source /usr/share/nvm/bash_completion
+
+# OCI autocomplete
+[[ -e "/home/wvi/.local/lib/python3.6/site-packages/oci_cli/bin/oci_autocomplete.sh" ]] && source "/home/wvi/.local/lib/python3.6/site-packages/oci_cli/bin/oci_autocomplete.sh"
