@@ -31,7 +31,7 @@ setopt autopushd pushdsilent pushdtohome
 setopt pushdignoredups
 
 ## This reverts the +/- operators.
-setopt pushdminus
+# setopt pushdminus
 
 autoload bashcompinit && bashcompinit
 
